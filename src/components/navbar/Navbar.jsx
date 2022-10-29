@@ -1,14 +1,15 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-import { Logo } from './Navbar.styled'
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { LinkDiv, Logo, NavDiv } from "./Navbar.styled";
+import defaultImg from "../../assets/default-image.jpg";
 
 const Navbar = () => {
   return (
-    <div>
+    <NavDiv>
       <div>
-        <Logo src="../assets/default-image.jpg" />
+        <Logo src={defaultImg} />
       </div>
-      <div>
+      <LinkDiv>
         <ul>
           <li>
             <NavLink to={"/"}>Home</NavLink>
@@ -17,15 +18,21 @@ const Navbar = () => {
             <NavLink to={"/about"}>About</NavLink>
           </li>
           <li>
-            <NavLink to={"/"}>Github</NavLink>
+            <a
+              href="https://github.com/SkyCooper?tab=repositories"
+              target="_blank"
+            >
+              {" "}
+              Github
+            </a>
           </li>
           <li>
             <NavLink to={"/"}>Logout</NavLink>
           </li>
         </ul>
-      </div>
-    </div>
+      </LinkDiv>
+    </NavDiv>
   );
-}
+};
 
-export default Navbar
+export default Navbar;

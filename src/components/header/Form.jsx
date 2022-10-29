@@ -4,15 +4,17 @@
 
 // Application Keys cd58971276c2e658d305c7a25c958e04
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { Outlet } from "react-router-dom";
 import Card from "../card/Card";
+import homeSvg from "../../assets/home.svg";
+import { HomeImg, ImgDiv } from "./Header.styled";
 
 const Form = () => {
   const [searchText, setSearchText] = useState("");
   const [mealType, setMealType] = useState("");
   const [error, setError] = useState("");
+  const [recipe, setRecipe] = useState([]);
   const appID = "3873165c";
   const appKey = "cd58971276c2e658d305c7a25c958e04";
   // const appKey = process.env.REACT_APP_API_KEY;
@@ -29,23 +31,13 @@ const Form = () => {
         const {
           data: { hits },
         } = await axios(url);
-        // const {
-        //   recipe: { label, images },
-        // } = hits;
-
+        setRecipe(hits);
         console.log(hits);
-        // console.log(label, images)
       }
     } catch (error) {
       setError("Wrong request, check your API");
     }
   };
-
-  // useEffect(() => {
-  //   getMeal();
-  //   setSearchText("");
-  //   // eslint-disable-next-line
-  // }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -95,7 +87,12 @@ const Form = () => {
         </select>
         <p>{error}</p>
       </form>
-      {hits.map((item, index) => (
+      {recipe.length === 0 && (
+        <ImgDiv>
+          <HomeImg src={homeSvg} />
+        </ImgDiv>
+      )}
+      {recipe.map((item, index) => (
         <Card key={index} {...item} />
       ))}
     </>
