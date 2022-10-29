@@ -1,9 +1,3 @@
-// https://api.edamam.com/api/recipes/v2?type=any&beta=false&q=${query}&app_id=${appID}&app_key=${appKey}&mealType=${mealType}
-
-// Application ID  3873165c
-
-// Application Keys cd58971276c2e658d305c7a25c958e04
-
 import React, { useState } from "react";
 import axios from "axios";
 import Card from "../card/Card";
@@ -15,14 +9,12 @@ const Form = () => {
   const [mealType, setMealType] = useState("");
   const [error, setError] = useState("");
   const [recipe, setRecipe] = useState([]);
-  const appID = "3873165c";
-  const appKey = "cd58971276c2e658d305c7a25c958e04";
-  // const appKey = process.env.REACT_APP_API_KEY;
-  // const appID = process.env.REACT_APP_API_ID;
+  const appKey = process.env.REACT_APP_API_KEY;
+  const appID = process.env.REACT_APP_API_ID;
 
   const url = `https://api.edamam.com/api/recipes/v2?type=any&beta=false&q=${searchText}&app_id=${appID}&app_key=${appKey}&mealType=${mealType}`;
 
-  // yedek url
+  // second url
   const url1 = `https://api.edamam.com/api/recipes/v2?type=public&q=${searchText}&app_id=${appID}&app_key=${appKey}&mealType=${mealType}`;
 
   const getMeal = async () => {
