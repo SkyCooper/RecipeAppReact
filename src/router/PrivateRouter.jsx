@@ -1,13 +1,15 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-const PrivateRouter = () => {
-  const user = true;
+const PrivateRouter = ({ isloggedin }) => {
+  // const user = true;
   //* yani kullanıcı giriş yaptıysa outleti yani App.js içindeki child componenti yani contactı göster.
 
   // const user = false;
   //* yani kullanıcı giriş yapmadıysa Login sayfasını göster ve giriş yapmaya yönlendir.
 
-  return <div>{user ? <Outlet /> : <Navigate to="/about" />}</div>;
+  console.log(isloggedin);
+
+  return <div>{isloggedin ? <Outlet /> : <Navigate to="/login" />}</div>;
 };
 
 export default PrivateRouter;

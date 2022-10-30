@@ -15,9 +15,9 @@ const App = () => {
   return (
     <>
       <ThemeProvider theme={style}>
-        <Navbar />
-        <GlobalStyles />
-        <AppRouter />
+          <GlobalStyles />
+          <Navbar />
+          <AppRouter />
       </ThemeProvider>
     </>
   );

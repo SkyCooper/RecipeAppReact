@@ -22,12 +22,11 @@ const Navbar = () => {
               href="https://github.com/SkyCooper?tab=repositories"
               target="_blank"
             >
-              {" "}
               Github
             </a>
           </li>
           <li>
-            <NavLink to={"/"}>Logout</NavLink>
+            <NavLink to={"/logout"}>Logout</NavLink>
           </li>
         </ul>
       </LinkDiv>
