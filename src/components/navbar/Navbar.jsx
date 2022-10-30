@@ -7,15 +7,30 @@ const Navbar = () => {
   return (
     <NavDiv>
       <div>
-        <Logo src={defaultImg} />
+        {/* <Logo src={defaultImg} /> */}
+        <h2>Designed by @Cooper</h2>
       </div>
       <LinkDiv>
         <ul>
           <li>
-            <NavLink to={"/"}>Home</NavLink>
+            <NavLink
+              style={({ isActive }) => ({
+                color: isActive && "red",
+              })}
+              to={"/"}
+            >
+              Home
+            </NavLink>
           </li>
           <li>
-            <NavLink to={"/about"}>About</NavLink>
+            <NavLink
+              style={({ isActive }) => ({
+                color: isActive && "red",
+              })}
+              to={"/about"}
+            >
+              About
+            </NavLink>
           </li>
           <li>
             <a
@@ -26,7 +41,14 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <NavLink to={"/logout"}>Logout</NavLink>
+            <NavLink
+              style={({ isActive }) => ({
+                color: isActive && "red",
+              })}
+              to={"/logout"}
+            >
+              Logout
+            </NavLink>
           </li>
         </ul>
       </LinkDiv>

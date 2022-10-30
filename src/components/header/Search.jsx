@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import Card from "../card/Card";
 import homeSvg from "../../assets/home.svg";
-import { HomeImg, ImgDiv } from "./Header.styled";
+import { HomeImg, ImgDiv, FormDiv, Form, CardDiv } from "./Header.styled";
 
-const Form = () => {
+const Search = () => {
   const [searchText, setSearchText] = useState("");
   const [mealType, setMealType] = useState("");
   const [error, setError] = useState("");
@@ -50,45 +50,49 @@ const Form = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <h2>Cooper Food App</h2>
-        <input
-          type="text"
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
-          placeholder="Search for food"
-          autoFocus
-        />
-        <button>Search</button>
-        <label htmlFor="meal"></label>
-        <select
-          name="mealtype"
-          id="meal"
-          value={mealType}
-          onChange={(e) => setMealType(e.target.value)}
-        >
-          <option disabled selected value="mealType">
-            Meal Type
-          </option>
-          <option value="breakfast">Breakfast</option>
-          <option value="brunch">Brunch</option>
-          <option value="lunch">Lunch</option>
-          <option value="dinner">Dinner</option>
-          <option value="snack">Snack</option>
-          <option value="teatime">Teatime</option>
-        </select>
-        <p>{error}</p>
-      </form>
-      {recipe.length === 0 && (
-        <ImgDiv>
-          <HomeImg src={homeSvg} />
-        </ImgDiv>
-      )}
-      {recipe.map((item, index) => (
-        <Card key={index} {...item} />
-      ))}
+      <FormDiv>
+        <Form onSubmit={handleSubmit}>
+          <h2>Food App</h2>
+          <input
+            type="text"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+            placeholder="Search for food"
+            autoFocus
+          />
+          <label htmlFor="meal"></label>
+          <select
+            name="mealtype"
+            id="meal"
+            value={mealType}
+            onChange={(e) => setMealType(e.target.value)}
+            >
+            <option hidden value="mealType">
+              Meal Type
+            </option>
+            <option value="breakfast">Breakfast</option>
+            <option value="brunch">Brunch</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="snack">Snack</option>
+            <option value="teatime">Teatime</option>
+          </select>
+            <button>Search</button>
+          <p>{error}</p>
+        </Form>
+      </FormDiv>
+      <CardDiv>
+        {recipe.length === 0 && (
+          <ImgDiv>
+            <HomeImg src={homeSvg} />
+          </ImgDiv>
+        )}
+        {recipe.map((item, index) => (
+          <Card key={index} {...item} />
+        ))}
+      </CardDiv>
     </>
   );
 };
 
-export default Form;
+export default Search;

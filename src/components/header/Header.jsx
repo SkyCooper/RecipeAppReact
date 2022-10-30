@@ -1,9 +1,9 @@
-import Form from "./Form";
+import Search from "./Search";
 
 const Header = () => {
   return (
     <>
-     <Form/>
+     <Search/>
     </>
   );
 };

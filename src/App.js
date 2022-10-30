@@ -8,6 +8,7 @@ const style = {
     header: "#b8b2b2",
     body: "#eee",
     footer: "#8A1C4A",
+    button1: "#343B41",
   },
 };
 
